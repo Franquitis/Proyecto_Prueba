@@ -3,5 +3,6 @@ export interface Brawlers {
     nombre:string;
     rareza:string;
     tipo:string;
-    daño:number
+    daño:number;
+    imagen:string
 }

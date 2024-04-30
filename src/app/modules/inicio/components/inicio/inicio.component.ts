@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+//importamos interfaz
+import { Brawlers } from 'src/app/models/brawlers';
 
 @Component({
   selector: 'app-inicio',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent {
-
+  
 }

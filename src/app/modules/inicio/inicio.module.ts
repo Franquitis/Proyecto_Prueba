@@ -19,12 +19,14 @@ import {MatCardModule} from '@angular/material/card';
     CardComponent
   ],
   imports: [
+    //importamos desde la web y traemos al modulo
     CommonModule,
     InicioRoutingModule,
     MatButtonModule,
     MatCardModule
   ],
   exports:[
+    //exportamos al resto de la pagina
     MatButtonModule,
     MatCardModule
   ]

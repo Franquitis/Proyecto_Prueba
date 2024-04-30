@@ -1,18 +1,29 @@
-<mat-card class="example-card" style="width: 25%; text-align: center;">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>EL PRIMO</mat-card-title>
-      <mat-card-subtitle>Tanque</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://i.redd.it/26lk0foztih21.jpg" alt="Photo of a Shiba Inu" >
-    <mat-card-content>
-      <p>
-        El Primo es el centro de todas las miradas ¡y es que es el rey del cuadrilatero! Es experto en meterse al publico en el bolsillo, aunque no le resulta tan tacil con sus compañeros...
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>Seleccionar</button>
-      <button mat-button>Probar</button>
-    </mat-card-actions>
-  </mat-card>
-  
+<div class="container">
+  <div class="row">
+    <h1>Inicio</h1>
+
+    <div class="col">
+      <div  class="contenido" *ngFor="let i of info">
+        <mat-card style="width: 30%; text-align: center;" class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{i.nombre}}</mat-card-title>
+            <mat-card-subtitle>{{i.rareza}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{i.imagen}}" alt="">
+          <mat-card-content>
+            <h3>{{i.tipo}}</h3>
+            <p>
+              
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>ELEGIR</button>
+            <button mat-button>PROBAR</button>
+          </mat-card-actions>
+        </mat-card>
+        
+      </div>
+    </div>
+  </div>
+</div>
