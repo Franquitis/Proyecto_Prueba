@@ -6,11 +6,15 @@ import { AutentificacionRoutingModule } from './autentificacion-routing.module';
 import { RegistrosComponent } from './pages/registros/registros.component';
 import { IniciosesionComponent } from './pages/iniciosesion/iniciosesion.component';
 
-//COMPONENTES DE ANGULAR MATERIAL
+//COMPONENTES DE MATERIAL
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+
+//COMPONENTE DE ANGULAR
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +28,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatSelectModule
   ],
   
   exports: [
@@ -33,7 +39,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatSelectModule
   ]
 })
 export class AutentificacionModule { }
