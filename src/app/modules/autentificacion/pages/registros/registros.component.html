@@ -32,15 +32,15 @@
     </p>
 
     <!--rol de usuario-->
-
-    <mat-form-field>
-      <mat-label>Rol de usuario</mat-label>
-      <select [(ngModel)]="usuarios.rol" matNativeControl required>
-        <option value="admin">Administrador</option>
-        <option value="vist">Visitante</option>
-      </select>
-    </mat-form-field>
-
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Rol de usuario</mat-label>
+        <select [(ngModel)]="usuarios.rol" matNativeControl required>
+          <option value="admin">Administrador</option>
+          <option value="vist">Visitante</option>
+        </select>
+      </mat-form-field>
+    </div>
 
     <div class="example-container">
       <mat-form-field>
