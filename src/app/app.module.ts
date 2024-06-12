@@ -11,6 +11,12 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/components/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//HERRAMIENTAS DE LA BASE DE DATOS
+import { environment } from 'src/environments/environments'; //vincula la base de datos con la app
+import {AngularFireModule} from '@angular/fire/compat';
+import {AngularFireAuthModule} from '@angular/fire/compat/auth';
+import {AngularFireStorageModule} from '@angular/fire/compat/storage'
+
 
 @NgModule({
   declarations: [
@@ -20,7 +26,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig), //inicializar firebase dentro del proyecto
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
