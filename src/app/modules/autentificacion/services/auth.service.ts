@@ -25,5 +25,18 @@ export class AuthService {
     //devuelve una promesa vacia - quita token
     return this.auth.signOut();
   }
+
   //funcion para tomar el uid
+  async obtenerUid(){
+    //nos va a generar una promesea, y la constante la va a capturar
+    const user=await this.auth.currentUser;
+
+    //si el usuario no respeta la estructura de la interfaz 
+    //o si tuvo problemas para el registro -> ejemplo: mal internet
+    if(user == null){
+      return null;
+    }else{
+      return user.uid;
+    }
+  }
 }

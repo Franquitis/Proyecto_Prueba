@@ -2,59 +2,30 @@
     <div class="row">
 
         <h1>Iniciar Sesion</h1>
-
-        <p>
-            <mat-form-field appearance="fill">
-              <mat-label>ingrese su nombre</mat-label>
-              <input [(ngModel)]="perfiles.nombre" matInput placeholder="Ej: santiago lope">
-              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      
-            </mat-form-field>
-          </p>
-      
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label>Ingrese su apellido</mat-label>
-              <input  [(ngModel)]="perfiles.apellido" matInput placeholder="Ej: lope nuñle">
-              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      
-            </mat-form-field>
-          </p>
       
           <p>
             <mat-form-field appearance="fill">
               <mat-label>Ingrese su Correo</mat-label>
-              <input [(ngModel)]="perfiles.email" matInput placeholder="Ej: lopenuñe@gmail.com">
+              <input [(ngModel)]="usuarioIngresado.email" matInput placeholder="Ej: lopenuñe@gmail.com">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       
             </mat-form-field>
           </p>
       
-          <!--rol de usuario-->
-          <div class="example-container">
-            <mat-form-field>
-              <mat-label>Rol de usuario</mat-label>
-              <select [(ngModel)]="perfiles.rol" matNativeControl required>
-                <option value="admin">Administrador</option>
-                <option value="vist">Visitante</option>
-              </select>
-            </mat-form-field>
-          </div>
-      
           <div class="example-container">
             <mat-form-field>
               <mat-label>Ingrese su contraseña</mat-label>
-              <input [(ngModel)]="perfiles.password" matInput [type]="hide ? 'password' : 'text'" #input minlength="6"
+              <input [(ngModel)]="usuarioIngresado.password" matInput [type]="hide ? 'password' : 'text'" #input minlength="6"
                 required>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
               <mat-hint align="start">Minimo:6/{{input.value.length}}</mat-hint>
             </mat-form-field>
           </div>
 
          <!--Boton para enviar la informacion del usuario a la base de datos-->
-    <button class="boton" mat-raised-button color="primary" (click)="comparador()">Iniciar Sesion</button>
+    <button class="boton" mat-raised-button color="primary" (click)="iniciarSesion()">Iniciar Sesion</button>
     </div>
 </div>

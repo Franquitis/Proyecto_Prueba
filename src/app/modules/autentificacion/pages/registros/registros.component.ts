@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
-//importamos servicio d eautentificacion
+//importamos servicio de autentificacion
 import { AuthService } from '../../services/auth.service';
 //importamos componente de rutas de angular
 import { Router } from '@angular/router';
+// servicio de firestore
+import { FirestoreService } from 'src/app/modules/shared/services/firestore.service';
 
 @Component({
   selector: 'app-registros',
@@ -26,11 +28,16 @@ export class RegistrosComponent {
   //CREAMOS COLECCION DE USUARIOS, TIPO "USUARIO" PARA ARRAYS
   coleccionUsuarios: Usuario[] = [];
   //fin de importaciones
-  constructor(public servicioAuth: AuthService, 
-     public serviciosRutas: Router){}
+  constructor(
+      public servicioAuth: AuthService, 
+      public serviciosRutas: Router,
+      public servicioFirestore:FirestoreService,
+    ){}
 
   //FUNCION PARA EL REGISTROS DE NUEVOS USUARIOS
   async registrar() {
+
+
     //constante de credenciales, va a resguardar la informacion que ingrese ell usuario
     /*
     const credenciales = {
@@ -68,11 +75,25 @@ const res =await this.servicioAuth.registrar(credenciales.email, credenciales.pa
 alert("Hubo un error al registrarse \n"+error)
 })
 
+const uid= await this.servicioAuth.obtenerUid();
+
+this.usuarios.uid = uid
+
 //se envia la nueva informacion como un nuevo objeto a la coleccion de usuarios
 
 //notificamos al nuevo usaurio que se registro con exito
 alert("Se ha registrado con exito")
 this.cleaner()
+  }
+
+  async guardarUsuario(){
+  this.servicioFirestore.agregarUsuario(this.usuarios, this.usuarios.uid)
+  .then(res =>{
+    console.log(this.usuarios);  
+  })
+  .catch(err =>{
+    console.log('Error =>', err);
+  })
   }
 
 //Funcion para limpiar los inputs
