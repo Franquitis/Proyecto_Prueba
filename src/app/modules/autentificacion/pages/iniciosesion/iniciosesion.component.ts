@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from '../../services/auth.service';
 import { FirestoreService } from 'src/app/modules/shared/services/firestore.service';
 import { Router } from '@angular/router';
+import * as CryptoJS from 'crypto-js'
 
 @Component({
   selector: 'app-iniciosesion',
@@ -97,6 +98,43 @@ export class IniciosesionComponent {
     email:this.usuarioIngresado.email,
     password:this.usuarioIngresado.password
   }
+
+  try{
+
+    //Obtenemos el usuario de la BD
+    const usuarioBD = await this.servicoAuth.obtenerUsuario(credenciales.email);
+    if(!usuarioBD || usuarioBD.empty){
+      alert("Correo electronico no registrado");
+      this.LimpiarInputs();
+      return;
+    }
+
+    const usuarioDoc = usuarioBD.docs[0];
+
+    const usuarioData = usuarioDoc.data() as Usuario;
+
+    const hashedPassword = CryptoJS.SHA256(credenciales.password).toString();
+
+    if (hashedPassword !== usuarioData.password) {
+      alert("Contraseña incorrecta")
+      this.usuarios.password ='';
+      return;
+    }
+
+    const res= await this.servicoAuth.iniciosesion(credenciales.email, credenciales.password)
+    .then(res =>{
+      alert('se pudo iniciar sesion');
+      this.servicioRutas.navigate(['/Inicio'])
+    })
+    .catch(err =>{
+      alert('no se pudo iniciar sesion'+err)
+  
+      this.LimpiarInputs();
+    })
+  }catch(error){
+    this.LimpiarInputs();
+  }
+
   const res= await this.servicoAuth.iniciosesion(credenciales.email, credenciales.password)
   .then(res =>{
     alert('se pudo iniciar sesion');
