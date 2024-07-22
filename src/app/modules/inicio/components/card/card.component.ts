@@ -20,7 +20,7 @@ this.info = [
   rareza:"ESPECIAL",
   tipo:"TANQUE",
   daño:608,
-  imagen:"https://static.wikia.nocookie.net/brawlstars/images/0/04/El_Primo_Skin-Default.png/revision/latest?cb=20191108132435&path-prefix=es"
+  imagen:"https://i.redd.it/58w3k4m1c4u61.jpg"
 },
 {
   id:"",
@@ -28,7 +28,7 @@ this.info = [
   rareza:"MITICO",
   tipo:"ASESINO",
   daño:420,
-  imagen:"https://static.wikia.nocookie.net/brawlstars/images/6/62/Buzz_Skin-Default.png/revision/latest?cb=20220123071159"
+  imagen:"https://preview.redd.it/is-buzz-actually-balanced-v0-a5rfqd481fgb1.png?auto=webp&s=143f5f642f662a925e001370d84648305a7fb5e0"
 },
 {
   id:"",

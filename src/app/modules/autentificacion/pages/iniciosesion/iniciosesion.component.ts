@@ -117,7 +117,7 @@ export class IniciosesionComponent {
 
     if (hashedPassword !== usuarioData.password) {
       alert("Contraseña incorrecta")
-      this.usuarios.password ='';
+      this.usuarioIngresado.password ='';
       return;
     }
 

@@ -1,42 +1,41 @@
 <mat-toolbar>
-    <button  id="menuSecciones" mat-icon-button class="example-icon" [matMenuTriggerFor]="seccion">
-      <mat-icon>menu</mat-icon>
-    </button>
+  <button id="menuSecciones" mat-icon-button class="example-icon" [matMenuTriggerFor]="seccion">
+    <mat-icon>menu</mat-icon>
+  </button>
 
-<mat-menu #seccion="matMenu">
-  <button mat-menu-item routerLink="/inicio">Inicio</button>
-  <button mat-menu-item [matMenuTriggerFor]="producto">Productos</button>
-</mat-menu>
+  <mat-menu #seccion="matMenu">
+    <button mat-menu-item routerLink="/inicio">Inicio</button>
+    <button mat-menu-item [matMenuTriggerFor]="producto">Productos</button>
+  </mat-menu>
 
-    <span>My App</span>
-    <!--Inicio de la pagina-->
+  <span>My App</span>
+  <!--Inicio de la pagina-->
 
-    <!--se van a mostrar cuando la pantalla sea mayor a 700px-->
-    <button id="menuInicio" mat-button routerLink="/inicio">Inicio</button>
+  <!--se van a mostrar cuando la pantalla sea mayor a 700px-->
+  <button id="menuInicio" mat-button routerLink="/inicio">Inicio</button>
 
-    <!--Productos-->
-    <button id="menuProducto" mat-button [matMenuTriggerFor]="producto">Productos</button>
-<mat-menu #producto="matMenu">
-  <button mat-menu-item routerLink="/producto">General</button>
-  <button mat-menu-item routerLink="/rareza">Rarezas</button>
-  <button mat-menu-item routerLink="/tipo">Tipos</button>
-  <button mat-menu-item routerLink="/tienda">Tienda</button>
-</mat-menu>
+  <!--Productos-->
+  <button id="menuProducto" mat-button [matMenuTriggerFor]="producto">Productos</button>
+  <mat-menu #producto="matMenu">
+    <button mat-menu-item routerLink="/producto">General</button>
+    <button mat-menu-item routerLink="/rareza">Rarezas</button>
+    <button mat-menu-item routerLink="/tipo">Tipos</button>
+    <button mat-menu-item routerLink="/tienda">Tienda</button>
+  </mat-menu>
 
-    <!--BOTONES CON ICONOS-->
-    <span class="example-spacer"></span>
+  <!--BOTONES CON ICONOS-->
+  <span class="example-spacer"></span>
 
-    <!--inicio de sesion y registro de un nuevo usuario-->
-    <button mat-button [matMenuTriggerFor]="usuario"> <mat-icon>account_circle</mat-icon></button>
-<mat-menu #usuario="matMenu">
-  <button mat-menu-item routerLink="/registro">Registrarse</button>
-  <button mat-menu-item routerLink="/inicio-sesion">Iniciar Sesion</button>
-</mat-menu>
+  <!--inicio de sesion y registro de un nuevo usuario-->
+  <button mat-button [matMenuTriggerFor]="usuario"> <mat-icon>account_circle</mat-icon></button>
+  <mat-menu #usuario="matMenu">
+    <button mat-menu-item routerLink="/registro">Registrarse</button>
+    <button mat-menu-item routerLink="/inicio-sesion">Iniciar Sesion</button>
+  </mat-menu>
 
-<!--carrito-->
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
-   
-  </mat-toolbar>
-  
+  <!--carrito-->
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
+
+</mat-toolbar>
