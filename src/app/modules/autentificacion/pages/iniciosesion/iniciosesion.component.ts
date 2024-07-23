@@ -103,18 +103,28 @@ export class IniciosesionComponent {
 
     //Obtenemos el usuario de la BD
     const usuarioBD = await this.servicoAuth.obtenerUsuario(credenciales.email);
+    //condicional verificaba que ese usuario de la BD existiera o que sea igual al de nuestra coleccion
     if(!usuarioBD || usuarioBD.empty){
       alert("Correo electronico no registrado");
       this.LimpiarInputs();
       return;
     }
 
+// vinculaba al primer documento de la coleccion "usuarios" que se obtenia desde la BD
     const usuarioDoc = usuarioBD.docs[0];
 
+    //extrae los datos del documento en forma de "objeto" y se especifica que va a ser del tipo "usuario"
+    //(se refiere a la interfaz Usuario de nuestros modulos)
     const usuarioData = usuarioDoc.data() as Usuario;
 
+    //encripta la contraseña que el usuario envia mediante "Iniciar Sesion"
     const hashedPassword = CryptoJS.SHA256(credenciales.password).toString();
 
+
+    /*
+    Condicional que compara la contraseña que acabamos de encriptar y que el usuario envie
+    con la que recibimos del UsuarioData
+    */
     if (hashedPassword !== usuarioData.password) {
       alert("Contraseña incorrecta")
       this.usuarioIngresado.password ='';
