@@ -16,6 +16,9 @@ const routes: Routes = [
   },
   {//paht es una ruta, va con comillas vacias porque no quremos que nos cargue todo el modulo. ()=> es una fucion flecha que indica la ruta del modulo
     path:"",loadChildren:()=>import('./modules/autentificacion/autentificacion.module').then(m=>m.AutentificacionModule)
+  },
+  {
+    path:"",loadChildren:()=>import('./modules/admin/admin.module').then(m=>m.AdminModule)
   }
 
 ];

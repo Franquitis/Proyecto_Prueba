@@ -9,6 +9,8 @@ import { FirestoreService } from 'src/app/modules/shared/services/firestore.serv
 
 import * as CryptoJS from 'crypto-js';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-registros',
   templateUrl: './registros.component.html',
@@ -68,13 +70,21 @@ const credenciales={
 const res =await this.servicioAuth.registrar(credenciales.email, credenciales.password)
 //el metodo THEN es una promesa que devuelve el mismo valor si todo sle bien
 .then(res => {
-  alert("Se pudo registrar con exito")
+  Swal.fire({
+    title: "Buen trabajo!",
+    text: "Se pudo registrar con exito",
+    icon: "success"
+  });
   //el metodo NAVIGATE nos redirecciona a otra vista
   this.serviciosRutas.navigate(['/inicio'])
 })
 //el metodo CATCH captura una falla y la vuelve error cuando la promesa salga mal
 .catch(error => {
-alert("Hubo un error al registrarse \n"+error)
+  Swal.fire({
+    title: "Oh no",
+    text: "Hubo un error al registrarse"+error,
+    icon: "error"
+  });
 })
 
 const uid= await this.servicioAuth.obtenerUid();
@@ -93,7 +103,7 @@ this.usuarios.password=CryptoJS.SHA256(this.usuarios.password).toString();
 //se envia la nueva informacion como un nuevo objeto a la coleccion de usuarios
 
 //notificamos al nuevo usaurio que se registro con exito
-alert("Se ha registrado con exito")
+
 this.cleaner()
   }
 
@@ -117,6 +127,6 @@ this.cleaner()
       rol: this.usuarios.rol = '',
       password: this.usuarios.password = ''
     }
-    alert("Se registro corectamente")
+    
   }
 }
