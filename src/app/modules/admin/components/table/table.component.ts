@@ -30,7 +30,11 @@ export class TableComponent {
   })
 
   constructor(public servicioCrud: CrudService) { }
-  ngOninit(): void { }
+  ngOninit(): void { 
+    this.servicioCrud.obtenerProducto().subscribe(producto=>{
+      this.coleccionProductos=producto
+    })
+  }
   async agregarProducto() {
     if (this.producto.valid) {
       let nuevoProducto: Producto = {
