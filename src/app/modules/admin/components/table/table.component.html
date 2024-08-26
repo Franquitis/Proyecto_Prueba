@@ -1,4 +1,4 @@
-<!--<table class="table">
+<table class="table">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -14,7 +14,7 @@
     </thead>
 
     <tbody>
-        <tr *ngFor="let producto of the coleccionProductos">
+        <tr *ngFor="let producto of coleccionProductos">
             <th scope="row"></th>
 
             <td>
@@ -25,14 +25,15 @@
             <td>{{producto.descripcion}}</td>
             <td>{{producto.categoria}}</td>
            
-            ACCIONES
+            <!--ACCIONES-->
             <td>
                 <button id="btn-edit" title="Editar" type="button" class="btn btn-outline-warning">
                     <mat-icon>edit</mat-icon>
                 </button>
             </td>
             <td>
-                <button id="btn-delete" title="Eliminar" type="button" class="btn btn-outline-danger">
+                <button id="btn-delete" title="Eliminar" type="button" class="btn btn-outline-danger"
+                data-bs-toggle="modal" data-bs-target="#eliminarProducto" (click)="mostrarBorrar(producto)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>
@@ -41,7 +42,7 @@
 </table>
 
 
--->
+
 
 <!-- BOTON AGREGAR NUEVOS PRODUCTOS -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
@@ -61,46 +62,126 @@
         <div [formGroup]="producto" class="modal-body">
           <div class="mb-3">
             <label class="form-label">Ingrese el nombre del producto</label>
-            <input class="form-control" type="text" formControlName="nombre" placeholder="Ej:"></input>
+            <input class="form-control" type="text" formControlName="nombre" placeholder="Ej:">
           </div>
 
           <div class="mb-3">
             <label class="form-label">Ingrese el precio del producto</label>
-            <input class="form-control" type="number" formControlName="precio" placeholder="Ej:"></input>
+            <input class="form-control" type="number" formControlName="precio" placeholder="Ej:">
           </div>
 
           <div class="mb-3">
             <label class="form-label">Ingrese la descripcion del producto</label>
-            <input class="form-control" type="text" formControlName="descripcion" placeholder="Ej:"></input>
+            <input class="form-control" type="text" formControlName="descripcion" placeholder="Ej:">
           </div>
 
           <div class="mb-3">
             <label class="form-label">Ingrese la categoria del producto</label>
             <select class="form-control" formControlName="categoria" class="form-select">
                 <option selected>Elija opcion</option>
-                <option value="productos"></option>
-                <option value="rareza"></option>
-                <option value="tienda"></option>
-                <option value="tipo"></option>
+                <option value="productos">muebles</option>
+                <option value="rareza">alimento</option>
+                <option value="tienda">juguete</option>
+                <option value="tipo">ropa</option>
             </select>
           </div>
 
           <div class="mb-3">
             <label class="form-label">Ingrese la imagen del producto</label>
-            <input class="form-control" type="text" formControlName="imagen" placeholder="Ej:"></input>
+            <input class="form-control" type="text" formControlName="imagen" placeholder="Ej:">
           </div>
 
           <div class="mb-3">
             <label class="form-label">Ingrese el alt del producto</label>
-            <input class="form-control" type="text" formControlName="alt" placeholder="Ej:"></input>
+            <input class="form-control" type="text" formControlName="alt" placeholder="Ej:">
           </div>
 
           
+          <!--Acciones del modal-->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-outline-success" (click)="agregarProducto()" data-bs-dismiss="modal">Guardar</button>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
   </div>
+
+
+<!--modal para editar-->
+<div class="modal fade" *ngFor="let productoEdit of coleccionProductos" id="editarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+          <!--titulo del modal-->
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edite el producto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!--cuerpo del modal-->
+      <div [formGroup]="producto" class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">edite el nombre del producto</label>
+          <input class="form-control" type="text" formControlName="nombre" placeholder="{{productoEdit.nombre}}">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Edite el precio del producto</label>
+          <input class="form-control" type="number" formControlName="precio" placeholder="{{productoEdit.precio}}">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese la descripcion del producto</label>
+          <input class="form-control" type="text" formControlName="descripcion" placeholder="{{productoEdit.descripcion}}">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese la categoria del producto</label>
+          <select class="form-control" formControlName="categoria" class="form-select">
+              <option selected>Elija opcion</option>
+              <option value="productos">muebles</option>
+              <option value="rareza">alimento</option>
+              <option value="tienda">juguete</option>
+              <option value="tipo">ropa</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese la imagen del producto</label>
+          <input class="form-control" type="text" formControlName="imagen" placeholder="Ej:">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Ingrese el alt del producto</label>
+          <input class="form-control" type="text" formControlName="alt" placeholder="Ej:">
+        </div>
+
+        
+        <!--Acciones del modal-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="agregarProducto()" data-bs-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para eliminar productos -->
+<div class="modal fade" *ngIf="modalVisibleProducto" id="eliminarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Esta seguro de eliminar el producto?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{productoSeleccionado.nombre}}
+        <img src="{{productoSeleccionado.imagen}}" alt="{{productoSeleccionado.alt}}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"  (click)="borrarProducto()">Eliminar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
